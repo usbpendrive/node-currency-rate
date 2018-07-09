@@ -1,0 +1,25 @@
+{
+  "name": "node-currency-rate",
+  "version": "1.0.0",
+  "description": "Node.js Currency Rate",
+  "main": "server.js",
+  "repository": "https://github.com/usbpendrive/node-currency-rate",
+  "author": "usbpendrive <ferry.fernando@gmail.com>",
+  "license": "MIT",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "handlebars": "^4.0.11",
+    "jquery": "^3.3.1",
+    "semantic-ui-css": "^2.3.3",
+    "vanilla-router": "^1.2.7"
+  }
+}
