@@ -6,6 +6,9 @@ const { convertCurrency } = require('./lib/free-currency-service');
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 app.use(express.static('public'));
 app.use('/scripts', express.static(`${__dirname}/node_modules/`));
 
@@ -42,10 +45,12 @@ app.get('/api/symbols', async (req, res) => {
 app.post('/api/convert', async (req, res) => {
     try {
         const { from, to } = req.body;
+        console.log(`${from} -> ${to}`);
         const data = await convertCurrency(from, to);
         res.setHeader('Content-Type', 'application/json');
         res.send(data);
     } catch (error) {
+        console.log(req.body);
         errorHandler(error, req, res);
     }
 });
@@ -65,9 +70,11 @@ const test = async() => {
 test();
 */
 
+/*
 const test = async() => {
     const data = await convertCurrency('USD', 'IDR');
     console.log(data);
 };
 
 test();
+*/
