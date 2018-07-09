@@ -18,6 +18,30 @@
             <a class="item" href="/exchange">Exchange Rates</a>
             <a class="item" href="/historical">Historical Rates</a>
         </div>
+        <script id="error-template" type="text/x-handlebars-template">
+            <div class="ui {{color}} inverted segment" style="height:250px">
+                <br>
+                <h2 class="ui center aligned icon header">
+                    <i class="exclamation triangle icon"></i>
+                    <div class="content">
+                        {{title}}
+                        <div class="sub header">{{message}}</div>
+                    </div>
+                </h2>
+            </div>
+        </script>
+        <script id="rates-template" type="text/x-handlebars-template">
+            <h1 class="ui header">Currency Rates</h1>
+            <hr>
+        </script>
+        <script id="exchange-template" type="text/x-handlebars-template">
+            <h1 class="ui header">Exchange Conversion</h1>
+            <hr>
+        </script>
+        <script id="historical-template" type="text/x-handlebars-template">
+            <h1 class="ui header">Historical Rates</h1>
+            <hr>
+        </script>
         <div id="app"></div>
     </div>
 
