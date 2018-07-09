@@ -101,9 +101,46 @@ window.addEventListener('load', () => {
         }
     });
 
+    const getHistoricalRates = async () => {
+        const date = $('#date').val();
+        try {
+            const response = await api.post('/historical', { date: date });
+            const { base, rates } = response.data;
+            const html = ratesTemplate({
+                base, date, rates
+            });
+            $('#historical-table').html(html);
+        } catch (error) {
+            showError(error);
+        } finally {
+            $('.segment').removeClass('loading');
+        }
+    };
+
+    const historicalRatesHandler = () => {
+        if ($('.ui.form').form('is valid')) {
+            $('.ui.error.message').hide();
+            $('.segment').addClass('loading');
+            getHistoricalRates();
+            return false;
+        }
+        return true;
+    };
+
     router.add('/historical', () => {
-        let html = historicalTemplate();
+        const html = historicalTemplate();
         el.html(html);
+
+        $('#calendar').calendar({
+            type: 'date',
+            formatter: {date: date => new Date(date).toISOString().split('T')[0],},
+        });
+        $('.ui.form').form({
+            fields: {
+                date: 'empty',
+            },
+        });
+        $('.submit').click(historicalRatesHandler);
     });
 
     router.navigateTo(window.location.pathname);
