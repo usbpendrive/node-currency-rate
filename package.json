@@ -25,5 +25,8 @@
   },
   "devDependencies": {
     "@types/axios": "^0.14.0"
+  },
+  "engines": {
+    "node": "8.11.1"
   }
 }

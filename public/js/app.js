@@ -19,7 +19,7 @@ window.addEventListener('load', () => {
     });
 
     const api = axios.create({
-        baseURL: 'http://localhost:3000/api',
+        baseURL: 'https://intense-scrubland-26939.herokuapp.com/api',
         timeout: 5000
     });
 
